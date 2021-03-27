@@ -1,0 +1,64 @@
+<div class="dx-fieldset">
+    <div class="dx-field">
+        <div class="dx-field-label">Naam</div>
+        <div class="dx-field-value">
+            <dx-text-box value="John Smith" placeholder="Wie heeft er betaald..." [showClearButton]="true"></dx-text-box>
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Inleg</div>
+        <div class="dx-field-value">
+            <dx-text-box placeholder="Hoeveel is er betaald..." [showClearButton]="true"></dx-text-box>
+        </div>
+    </div>
+</div>
+
+<div>
+    <dx-button
+        text="Click me"
+        (onClick)="helloWorld()">
+    </dx-button>
+
+    <dx-button
+        text="Opnieuw"
+        (onClick)="helloWorld()">
+    </dx-button>
+</div>
+
+<h1>Wie heeft wat betaald</h1>
+<div class="dx-fieldset">
+    <div *ngFor="let person of persons">
+        <div class="dx-field">
+            <div class="dx-field-label">{{person.name}}</div>
+            <div class="dx-field-value">
+                {{person.payment}} betaald
+            </div>
+        </div>
+    </div>
+
+    <div class="dx-field">
+        <div class="dx-field-label">Totaal betaald: </div>
+        <div class="dx-field-value">
+            Placeholder
+        </div>
+    </div>
+</div>
+
+<h1>De betaalverzoekjes</h1>
+<div class="dx-fieldset">
+    <div *ngFor="let person of persons">
+        <div class="dx-field">
+            <div class="dx-field-label">{{person.name}}</div>
+            <div class="dx-field-value">
+                {{person.payment}} betaald
+            </div>
+        </div>
+    </div>
+
+    <div class="dx-field">
+        <div class="dx-field-label">Totaal betaald: </div>
+        <div class="dx-field-value">
+            Placeholder
+        </div>
+    </div>
+</div>
