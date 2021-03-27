@@ -1,5 +1,4 @@
-export interface Person {
-    id : number;
-    name : string;
-    payment : number;
-  }
+export class Person {
+  name!: string;
+  paymentAmount!: number;
+}

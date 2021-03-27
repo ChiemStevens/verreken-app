@@ -1,64 +1,53 @@
-<div class="dx-fieldset">
-    <div class="dx-field">
-        <div class="dx-field-label">Naam</div>
-        <div class="dx-field-value">
-            <dx-text-box value="John Smith" placeholder="Wie heeft er betaald..." [showClearButton]="true"></dx-text-box>
+<div class="card">
+    <div class="container">
+        <h1>Verreken app</h1>
+
+        <div class="inputs">
+            <dx-select-box class="input" [(value)]="personToAdd" displayExpr="name" [dataSource]="persons" placeholder="Wie heeft er betaald..." [showClearButton]="true">
+                <dx-validator>
+                    <dxi-validation-rule type="required" message="Persoon selecteren is verplicht"></dxi-validation-rule>
+                </dx-validator>
+            </dx-select-box>
+            <dx-number-box class="input" format="€ #,##0.00" placeholder="Hoeveel is er betaald..." [showClearButton]="true" [(value)]="amountPayed">
+                <dx-validator>
+                    <dxi-validation-rule type="required" message="Bedrag is verplicht."></dxi-validation-rule>
+                    <dxi-validation-rule type="numeric" message="Bedrag moet een nummer zijn."></dxi-validation-rule>
+                </dx-validator>
+            </dx-number-box>
         </div>
-    </div>
-    <div class="dx-field">
-        <div class="dx-field-label">Inleg</div>
-        <div class="dx-field-value">
-            <dx-text-box placeholder="Hoeveel is er betaald..." [showClearButton]="true"></dx-text-box>
+        
+        <div class="buttons">
+            <dx-button
+                text="Betaling toevoegen"
+                (onClick)="addPayment()"
+                class="left-button">
+            </dx-button>
+        
+            <dx-button
+                text="Opnieuw"
+                (onClick)="resetPayment()"
+                class="right-button">
+            </dx-button>
         </div>
-    </div>
-</div>
-
-<div>
-    <dx-button
-        text="Click me"
-        (onClick)="helloWorld()">
-    </dx-button>
-
-    <dx-button
-        text="Opnieuw"
-        (onClick)="helloWorld()">
-    </dx-button>
-</div>
-
-<h1>Wie heeft wat betaald</h1>
-<div class="dx-fieldset">
-    <div *ngFor="let person of persons">
-        <div class="dx-field">
-            <div class="dx-field-label">{{person.name}}</div>
-            <div class="dx-field-value">
-                {{person.payment}} betaald
+        
+        <h1>Wie heeft wat betaald</h1>
+        <div class="dx-fieldset">
+            <div *ngFor="let payment of payments">
+                <div class="dx-field">
+                    <div class="dx-field-label">
+                        {{payment.personThatPayed.name}} heeft €{{payment.paymentAmount | number:'1.2-2'}} betaald voor {{payment.name}}
+                    </div>
+                </div>
+            </div>
+        
+            <div class="dx-field">
+                <div class="dx-field-label">Totaal betaald: €{{totalPayment}}</div>
             </div>
         </div>
-    </div>
-
-    <div class="dx-field">
-        <div class="dx-field-label">Totaal betaald: </div>
-        <div class="dx-field-value">
-            Placeholder
-        </div>
-    </div>
-</div>
-
-<h1>De betaalverzoekjes</h1>
-<div class="dx-fieldset">
-    <div *ngFor="let person of persons">
-        <div class="dx-field">
-            <div class="dx-field-label">{{person.name}}</div>
-            <div class="dx-field-value">
-                {{person.payment}} betaald
-            </div>
-        </div>
-    </div>
-
-    <div class="dx-field">
-        <div class="dx-field-label">Totaal betaald: </div>
-        <div class="dx-field-value">
-            Placeholder
+        
+        <h1>De betaalverzoekjes</h1>
+        <div *ngFor="let payment of paymentRequests">
+            {{payment.payers[0].name}} moet €{{payment.paymentAmount | number:'1.2-2'}} terugbetalen aan {{payment.personThatPayed.name}}
         </div>
     </div>
 </div>
