@@ -35,7 +35,8 @@
             <div *ngFor="let payment of payments">
                 <div class="dx-field">
                     <div class="dx-field-label">
-                        {{payment.personThatPayed.name}} heeft €{{payment.paymentAmount | number:'1.2-2'}} betaald voor {{payment.name}}
+                        {{payment.personThatPayed.name}} heeft €{{payment.paymentAmount | number:'1.2-2'}} betaald
+                        <!-- {{payment.personThatPayed.name}} heeft €{{payment.paymentAmount | number:'1.2-2'}} betaald voor {{payment.name}} -->
                     </div>
                 </div>
             </div>
