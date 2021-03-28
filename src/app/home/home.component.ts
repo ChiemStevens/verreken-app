@@ -45,4 +45,8 @@ export class HomeComponent implements OnInit {
     this.paymentRequests = [];
     this.totalPayment = 0;
   }
+
+  onChangeValue(event : any) {
+    this.amountPayed = Math.abs(this.amountPayed);
+  }
 }
