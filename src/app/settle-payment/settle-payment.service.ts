@@ -80,6 +80,28 @@ export class SettlePaymentService {
   private formatPaymentRequests(paymentRequests : Payment[], persons : Person[]) : Payment[] {
     paymentRequests.sort((a,b) => a.payers[0].name.localeCompare(b.payers[0].name));
 
-    return paymentRequests;
+    let formatedRequests : Payment[] = [];
+
+    console.log(paymentRequests);
+
+    paymentRequests.forEach(paymentRequest => {
+
+      let found = formatedRequests.find(x => x.payers[0] == paymentRequest.payers[0]);
+      if(found == undefined) {
+        formatedRequests.push(paymentRequest);
+      }
+      else {
+        if(paymentRequest.personThatPayed == found.personThatPayed) {
+          found.paymentAmount += paymentRequest.paymentAmount;
+        }
+        else {
+          formatedRequests.push(paymentRequest);
+        }
+      }
+    });
+
+    console.log(formatedRequests);
+
+    return formatedRequests;
   }
 }
