@@ -82,8 +82,6 @@ export class SettlePaymentService {
 
     let formatedRequests : Payment[] = [];
 
-    console.log(paymentRequests);
-
     paymentRequests.forEach(paymentRequest => {
 
       let found = formatedRequests.find(x => x.payers[0] == paymentRequest.payers[0]);
@@ -99,9 +97,6 @@ export class SettlePaymentService {
         }
       }
     });
-
-    console.log(formatedRequests);
-
     return formatedRequests;
   }
 }
