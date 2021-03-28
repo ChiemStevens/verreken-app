@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxNumberBoxModule, DxResponsiveBoxModule, DxSelectBoxModule, DxTextAreaModule, DxTextBoxModule, DxTileViewComponent, DxTileViewModule, DxValidatorModule } from 'devextreme-angular';
+import {DxSelectBoxModule} from 'devextreme-angular/ui/select-box'
+import {DxTextBoxModule} from 'devextreme-angular/ui/text-box'
+import {DxValidatorModule} from 'devextreme-angular/ui/validator'
+import { DxNumberBoxModule }from 'devextreme-angular/ui/number-box';
 import { DxButtonModule } from 'devextreme-angular/ui/button';
 import { DxiValidationRuleModule } from 'devextreme-angular/ui/nested';
 
@@ -16,11 +19,8 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     DxButtonModule,
     DxTextBoxModule,
-    DxTextAreaModule,
     DxNumberBoxModule,
     DxSelectBoxModule,
-    DxResponsiveBoxModule,
-    DxTileViewModule,
     DxiValidationRuleModule,
     DxValidatorModule
   ],
