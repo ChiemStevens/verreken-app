@@ -44,6 +44,9 @@ export class HomeComponent implements OnInit {
     this.payments = [];
     this.paymentRequests = [];
     this.totalPayment = 0;
+    this.persons.forEach(value => {
+      value.paymentAmount = 0;
+    });
   }
 
   onChangeValue(event : any) {
